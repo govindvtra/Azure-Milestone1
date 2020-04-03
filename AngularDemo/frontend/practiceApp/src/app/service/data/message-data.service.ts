@@ -10,6 +10,6 @@ export class MessageDataService {
   constructor(private http:HttpClient) { }
 
   PrintMessageBean(){
-    console.log(this.http.get("http://localhost:8080/hello-worldB"))
+    return this.http.get("http://localhost:8080/hello-worldB")
   }
 }

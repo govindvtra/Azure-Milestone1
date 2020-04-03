@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     //console.log("Button click okay")
     if(this.password==="dummy" && this.username==="govind"){
       console.log("Correct Credentials");
-      this.router.navigate(['welcome'])
+      this.router.navigate(['welcome',this.username])
       this.InvalidCredential= false
     }
     else{

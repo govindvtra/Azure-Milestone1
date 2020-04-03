@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoDataService } from '../service/data/todo-data.service';
+import { Router } from '@angular/router';
 export class Todo{
-  constructor(public id :number,
+  constructor(
+    public id :number,
+    public username: string,
     public description : string,
-    public status : boolean,
-    public date : Date
+    public tdate : string,
+    public status : boolean
+    
+    
  ){}
-   
+ //long id, String username, String description, String tdate, boolean status  
 }
 @Component({
   selector: 'app-todos',
@@ -15,17 +21,41 @@ export class Todo{
 
 
 export class TodosComponent implements OnInit {
+  
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+   message: string
+  todos: Todo[]
+  constructor(private todoService:TodoDataService,private router:Router) { }
     
-  todos =[ new Todo(1,"To learn angular",true,new Date()),
-          new Todo(2,"To learn DevOps",true,new Date()),
-          new Todo(3,"To learn Spring",true,new Date())]
+  ngOnInit(): void {
+     this.refreshTodos()
 
+  }
+   refreshTodos(){
+    this.todoService.retrieveAlltodose("govind").subscribe(response=>{
+      console.log(response)
+      this.todos=response})
+ 
+   } 
+  deleteButtonAction(id){
+    console.log("delete working")
 
+    this.todoService.deleteTodos("govind",id).subscribe(response =>
+      {
+        console.log(response)
+        this.message=`Successfully deleted Todo ${id}`
+        this.refreshTodos()
+
+      })
+
+  }
+
+  updateButtonAction(id){
+
+        //this.todoService.updateTodos("govind",id).subscribe()
+        this.router.navigate(['todos',id])
+
+  }
   
 
 }

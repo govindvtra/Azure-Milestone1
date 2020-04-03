@@ -4,13 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ErrorComponent } from './error/error.component';
 import { TodosComponent } from './todos/todos.component';
+import { UpdateAddTodoComponent } from './update-add-todo/update-add-todo.component';
 
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
   {path:'login', component: LoginComponent},
-  {path:'welcome', component: WelcomeComponent},
+  {path:'welcome/:name', component: WelcomeComponent},
   {path:'todos', component: TodosComponent},
+  {path:'todos/:id',component:UpdateAddTodoComponent},
   {path:'**', component: ErrorComponent}
 
 

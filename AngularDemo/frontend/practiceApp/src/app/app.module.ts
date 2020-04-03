@@ -11,6 +11,7 @@ import { ErrorComponent } from './error/error.component';
 import { TodosComponent } from './todos/todos.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { UpdateAddTodoComponent } from './update-add-todo/update-add-todo.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './footer/footer.component';
     ErrorComponent,
     TodosComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    UpdateAddTodoComponent
   ],
   imports: [
     BrowserModule,
